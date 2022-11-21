@@ -1,0 +1,61 @@
+
+/* semantic color variables for this project */
+:root {
+  --color-background-1: #E5E5E5;
+  --color-background-2: #ffffff;
+  --color-background-3: #F7FAFC;
+  --backdrop-background: #00000080;
+  --button-background: #E2E8F0;
+  --color-border-1: #e2e8f0;
+  --color-border-2: #475DE5;
+  --color-text: #1A202C;
+  --color-text-2: #2D3748;
+  --z-index-modal: 9999;
+  --z-index-tooltip: 9998;
+  --sub-text: #718096;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background-1);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 150%;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-input {
+  background-color: var(--color-background-2);
+  border: 1px solid var(--color-border-1);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.sub-text {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--sub-text);
+}
+
+input[type="checkbox"] {
+  transform: scale(1.235);
+}
