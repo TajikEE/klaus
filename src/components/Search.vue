@@ -3,12 +3,12 @@
     <input
       class="search text-input"
       type="text"
-      v-model="search"
+      v-model="searchQuery"
       placeholder="Search"
       @focus="showTooltip = true"
       @blur="showTooltip = false"
     />
-    <div v-if="isLoading === true" class="icon-container">
+    <div v-if="userStore.isSearching === true" class="icon-container">
       <i class="loader"></i>
     </div>
     <span class="tooltip sub-text" v-if="showTooltip"
@@ -18,19 +18,18 @@
 </template>
 
 <script setup>
-import { storeToRefs } from "pinia";
 import { ref, watch } from "vue";
 import { useUserStore } from "../stores/users";
 
 const showTooltip = ref(false);
-const search = ref("");
+const searchQuery = ref("");
 const userStore = useUserStore();
-const { isLoading } = storeToRefs(userStore);
 
 watch(
-  () => search.value,
+  () => searchQuery.value,
   (value) => {
     userStore.getSearchResult(value);
+    if (searchQuery.value.length === 0) userStore.isSearching = false;
   }
 );
 </script>

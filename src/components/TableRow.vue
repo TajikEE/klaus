@@ -33,7 +33,7 @@
         userStore.selectedUsers.includes(user.id) && 'selected-bg',
       ]"
     >
-      <TagComp :tagDetails="getRoleDetails" />
+      <TagComp :tagDetails="roleDetails" />
 
       <div class="btn-group">
         <ButtonSecondary class="btn btn-space" @click.stop="edit">
@@ -78,29 +78,26 @@ const deleteUser = () => {
   userStore.deleteUser(props.user.id);
 };
 
-const getRoleDetails = computed(() => {
-  if (props.user.role === ROLES.ADMIN) {
-    return {
-      text: "Admin",
-      color: "#EFE2FE",
-    };
-  } else if (props.user.role === ROLES.ACCOUNT_MANAGER) {
-    return {
-      text: "Account manager",
-      color: "#FEDDE6",
-    };
-  } else if (props.user.role === ROLES.AGENT) {
-    return {
-      text: "Agent",
-      color: "#C8E7F9",
-    };
-  } else if (props.user.role === ROLES.EXTERNAL_REVIEWER) {
-    return {
-      text: "External reviewer",
-      color: "#FEEBC8",
-    };
-  }
-});
+const roleMap = {
+  [ROLES.ADMIN]: {
+    text: "Admin",
+    color: "#EFE2FE",
+  },
+  [ROLES.ACCOUNT_MANAGER]: {
+    text: "Account manager",
+    color: "#FEDDE6",
+  },
+  [ROLES.AGENT]: {
+    text: "Agent",
+    color: "#C8E7F9",
+  },
+  [ROLES.EXTERNAL_REVIEWER]: {
+    text: "External reviewer",
+    color: "#FEEBC8",
+  },
+};
+
+const roleDetails = computed(() => roleMap[props.user.role]);
 </script>
 
 <style scoped>

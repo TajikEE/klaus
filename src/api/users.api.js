@@ -16,12 +16,15 @@ export function fetchTableUsers(page) {
   };
 }
 
-export function fetchSearchUsers() {
-  return usersData.users;
-}
-function toMap(list, keyProp) {
-  const keyValuePairs = list.map((item) => [item[keyProp], item]);
-  return new Map(keyValuePairs);
+export function fetchSearchUsers(query) {
+  return usersData.users
+    .filter((user) => {
+      return query
+        .toLowerCase()
+        .split(" ")
+        .every((v) => user.name.toLowerCase().includes(v));
+    })
+    .splice(0, PAGE_SIZE);
 }
 
 export async function initiateSeedData() {

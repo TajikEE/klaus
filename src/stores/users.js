@@ -1,4 +1,4 @@
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 import { fetchSearchUsers, fetchTableUsers } from "../api/users.api";
 
@@ -15,18 +15,15 @@ export const useUserStore = defineStore("users", () => {
   const currentPage = ref(0);
 
   function getUsers(page) {
+    isLoading.value = true;
     try {
-      isLoading.value = true;
-
       const response = fetchTableUsers(page);
       users.value = users.value.concat(response.users);
-
-      isLoading.value = false;
     } catch (ex) {
       console.error(ex);
-      isLoading.value = false;
       isError.value = true;
     }
+    isLoading.value = false;
   }
 
   function toggleSelect(user) {
@@ -75,21 +72,15 @@ export const useUserStore = defineStore("users", () => {
     });
   };
 
-  const getSearchResult = (search) => {
-    isLoading.value = true;
-    if (search.length >= 3) {
-      const response = fetchSearchUsers();
-      users.value = response.filter((user) => {
-        return search
-          .toLowerCase()
-          .split(" ")
-          .every((v) => user.name.toLowerCase().includes(v));
-      });
-      isLoading.value = false;
+  const getSearchResult = (query) => {
+    isSearching.value = true;
+    if (query.length >= 3) {
+      users.value = fetchSearchUsers(query);
+
+      isSearching.value = false;
     } else {
       users.value = [];
       getUsers(0);
-      // isLoading.value = false;
     }
   };
 
@@ -106,5 +97,8 @@ export const useUserStore = defineStore("users", () => {
     deleteUser,
     deleteUsers,
     getSearchResult,
+    isLoading,
+    isSearching,
+    isError,
   };
 });
