@@ -3,7 +3,7 @@
     <h1>Account users</h1>
 
     <div class="btn-group">
-      <Search />
+      <SearchComp />
       <ButtonPrimary @click="showText = true" class="btn"
         >Connect users</ButtonPrimary
       >
@@ -17,9 +17,9 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import ButtonPrimary from "./ButtonPrimary.vue";
-import Search from "./Search.vue";
+import SearchComp from "./SearchComp.vue";
 
 const showText = ref(false);
 </script>

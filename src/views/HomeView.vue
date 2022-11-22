@@ -1,13 +1,13 @@
 <template>
   <main>
-    <Heading />
+    <HeadingComp />
     <TableComp />
     <UserEditModal />
   </main>
 </template>
 
 <script setup>
-import Heading from "../components/Heading.vue";
+import HeadingComp from "../components/HeadingComp.vue";
 import TableComp from "../components/TableComp.vue";
 import UserEditModal from "../components/UserEditModal.vue";
 </script>

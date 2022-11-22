@@ -1,5 +1,8 @@
 <template>
-  <Modal :show="userStore.showModal" @onBackdrop="userStore.showModal = false">
+  <ModalComp
+    :show="userStore.showModal"
+    @onBackdrop="userStore.showModal = false"
+  >
     <template #header>
       <h2>Edit user</h2>
     </template>
@@ -37,12 +40,12 @@
         Close</ButtonSecondary
       >
     </template>
-  </Modal>
+  </ModalComp>
 </template>
 
 <script setup>
 import { computed } from "vue";
-import Modal from "../components/Modal.vue";
+import ModalComp from "./ModalComp.vue";
 import { useUserStore } from "../stores/users";
 import { ROLES } from "../constants/roles";
 import ButtonSecondary from "../components/ButtonSecondary.vue";

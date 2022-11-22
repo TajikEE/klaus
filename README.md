@@ -1,14 +1,14 @@
 # klaus
 
-This template should help get you started developing with Vue 3 in Vite.
+Hosted on: http://klaus-frontend-test.s3-website.eu-central-1.amazonaws.com
 
-## Recommended IDE Setup
+All the functionality has been covered for the task. Although the base design looks the same, but there are additional elements which have been made to improve the UI. Such as tooltip info on search bar focus.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Everything is reactive, for example, user name can be edited, and later searching it will find the user with new name.
 
-## Customize configuration
+There are some e2e tests that can be run with the command below.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+There is a cookie for fun, if you can find it!
 
 ## Project Setup
 
@@ -22,36 +22,8 @@ yarn
 yarn dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-yarn build
-```
-
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
-
-```sh
-yarn test:unit:dev # or `yarn test:unit` for headless testing
-```
-
 ### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
 ```sh
 yarn test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-yarn build
-yarn test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-yarn lint
 ```

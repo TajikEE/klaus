@@ -13,7 +13,7 @@
                 :checked="
                   userStore.selectedUsers.length && userStore.isToggleClicked
                 "
-                @click="toggleSelectAllUsers"
+                @click="userStore.toggleSelectAllUsers()"
               />
             </th>
             <th v-for="header in headers" :key="header">
@@ -60,6 +60,7 @@ import { storeToRefs } from "pinia";
 import TableActionBar from "./TableActionBar.vue";
 import { initiateSeedData } from "../api/users.api";
 import { useScroll, whenever } from "@vueuse/core";
+import { TABLE_HEADERS } from "../constants/table-headers";
 
 const userStore = useUserStore();
 const { users } = storeToRefs(userStore);
@@ -72,20 +73,16 @@ onMounted(async () => {
   userStore.getUsers(0);
 });
 
-const headers = ref(["User", "Permission"]);
+const headers = ref([TABLE_HEADERS.USER, TABLE_HEADERS.PERMISSION]);
 
 const sort = (key) => {
-  if (key === "User") {
-    sortedBy.value = "User";
+  if (key === TABLE_HEADERS.USER) {
+    sortedBy.value = TABLE_HEADERS.USER;
     users.value = users.value.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (key === "Permission") {
-    sortedBy.value = "Permission";
+  } else if (key === TABLE_HEADERS.PERMISSION) {
+    sortedBy.value = TABLE_HEADERS.PERMISSION;
     users.value = users.value.sort((a, b) => a.role.localeCompare(b.role));
   }
-};
-
-const toggleSelectAllUsers = () => {
-  userStore.toggleSelectAllUsers();
 };
 
 const tableRef = ref(null);
